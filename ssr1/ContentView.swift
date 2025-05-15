@@ -8,17 +8,26 @@
 import SwiftUI
 
 struct ContentView: View {
-    var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
-        }
-        .padding()
-    }
-}
+  @StateObject private var manager = PhotoAudioCaptureManager()
 
-#Preview {
-    ContentView()
+  var body: some View {
+    ZStack {
+      CameraPreview(session: manager.session).ignoresSafeArea()
+      VStack {
+        Spacer()
+        Button {
+          manager.capture()
+        } label: {
+          Text("Capture 📸 + 🔊")
+            .fontWeight(.bold)
+            .frame(maxWidth: .infinity)
+            .frame(height: 50)
+            .background(.white.opacity(0.8))
+            .cornerRadius(12)
+            .padding(.horizontal, 40)
+        }
+        .padding(.bottom, 30)
+      }
+    }
+  }
 }

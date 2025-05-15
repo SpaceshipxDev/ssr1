@@ -8,10 +8,6 @@
 import SwiftUI
 
 @main
-struct ssr1App: App {
-    var body: some Scene {
-        WindowGroup {
-            ContentView()
-        }
-    }
+struct PhotoLiveCaptureApp: App {
+  var body: some Scene { WindowGroup { ContentView() } }
 }
